@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>2048 PANTONE — puzle de fichas de colores</title>
+  <meta name="description" content="Juega a 2048 PANTONE: une fichas del mismo color para subir del gris al rosa, vigila tu nivel y deshaz una jugada cuando el tablero te atrape.">
+
+  <link rel="canonical" href="https://tile2048.github.io/2048-PANTONE/es/">
+  <link rel="alternate" hreflang="en" href="https://tile2048.github.io/2048-PANTONE/">
+  <link rel="alternate" hreflang="es" href="https://tile2048.github.io/2048-PANTONE/es/">
+  <link rel="alternate" hreflang="x-default" href="https://tile2048.github.io/2048-PANTONE/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2048 PANTONE — puzle de fichas de colores">
+  <meta property="og:description" content="Juega a 2048 PANTONE: une fichas del mismo color para subir del gris al rosa, vigila tu nivel y deshaz una jugada cuando el tablero te atrape.">
+  <meta property="og:url" content="https://tile2048.github.io/2048-PANTONE/es/">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <link href="../style/main.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" href="../meta/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="format-detection" content="telephone=no" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "2048 PANTONE",
+    "inLanguage": "es",
+    "url": "https://tile2048.github.io/2048-PANTONE/es/",
+    "description": "Versión en colores PANTONE del puzle de fichas 2048: une colores iguales para avanzar por la paleta del gris al rosa."
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+
+    <div class="heading">
+      <div class="title-container">
+        <h1 class="title">2048 <small>PANTONE</small></h1>
+      </div>
+      <div class="scores-container">
+        <div class="score-container">
+          <p>
+            <span class="caption">Puntuación</span><br>
+            <span class="score-points">0</span>
+          </p>
+        </div>
+        <div class="best-container">
+          <p>
+            <span class="caption">Mejor puntuación</span><br>
+            <span class="best-points">0</span>
+          </p>
+        </div>
+        <div class="score-container">
+          <p>
+            <span class="caption">Nivel</span><br>
+            <span class="score-level">gris</span>
+          </p>
+        </div>
+        <div class="best-container">
+          <p>
+            <span class="caption">Mejor nivel</span><br>
+            <span class="best-level">gris</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="lang-links"><a href="../" hreflang="en" lang="en">English</a> <span>Español</span></nav>
+
+    <div class="above-game">
+      <p class="game-intro">¡Únete a los <strong>colores PANTONE!</strong></p>
+      <a class="restart-button">Nueva partida</a>
+    </div>
+
+    <div class="game-container">
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+	        <a class="keep-playing-button">Continuar</a>
+          <a class="retry-button">Reintentar</a>
+          <div class="score-sharing"></div>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+      </div>
+
+      <div class="tile-container">
+
+      </div>
+    </div>
+
+    <p class="game-explanation">
+      <strong class="important">Cómo jugar:</strong> usa las <strong>teclas de flecha</strong> para mover las fichas. Cuando dos fichas del mismo color se tocan, ¡se convierten en <strong>el color siguiente!</strong><br>
+      Pulsa 'Z' para <a href="#" onclick="handle_undo()">deshacer una o varias jugadas</a>.
+    </p>
+    <p class="game-about">
+      2048 PANTONE funciona como una carta de colores que puedes barajar. Once muestras van del gris frío del 2 al rosa del 2048, pasando por turquesa, marrón, magenta, amarillo, cian, verde, naranja, lima y azul marino, y el número de cada muestra es también su valor en puntos. Empuja la cuadrícula de 4×4 con las flechas o con un deslizamiento; dos muestras del mismo tono se convierten en el color siguiente de la serie. La Z deshace una jugada, algo que conviene recordar cuando falta una sola casilla. La paleta termina en el rosa, y esa ficha es la que hay que perseguir.
+    </p>
+    <hr>
+    <p class="tile-legend"><strong class="important">Leyenda de fichas:</strong></p>
+    <div class="legend-list">
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-2"><img src="../style/img/2.jpg" alt="gris"></div></div>
+        <p>gris</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-4"><img src="../style/img/4.jpg" alt="turquesa"></div></div>
+        <p>turquesa</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-8"><img src="../style/img/8.jpg" alt="marrón"></div></div>
+        <p>marrón</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-16"><img src="../style/img/16.jpg" alt="magenta"></div></div>
+        <p>magenta</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-32"><img src="../style/img/32.jpg" alt="amarillo"></div></div>
+        <p>amarillo</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-64"><img src="../style/img/64.jpg" alt="cian"></div></div>
+        <p>cian</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-128"><img src="../style/img/128.jpg" alt="verde"></div></div>
+        <p>verde</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-256"><img src="../style/img/256.jpg" alt="naranja"></div></div>
+        <p>naranja</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-512"><img src="../style/img/512.jpg" alt="lima"></div></div>
+        <p>lima</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-1024"><img src="../style/img/1024.jpg" alt="azul marino"></div></div>
+        <p>azul marino</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-2048"><img src="../style/img/2048.jpg" alt="rosa"></div></div>
+        <p>rosa</p>
+      </div>
+    </div>
+    <hr>
+    <p class="disclaimer">
+    <strong class="important">Nota:</strong> Una variante creada por aficionados de 2048, el juego original de Gabriele Cirulli.
+    </p>
+    <hr>
+    <p class="credits">
+      Colores por <a href="http://www.pantone.com/pages/pantone/index.aspx" title="Pantone - PANTONE Color, products and guides for accurate color communication.">Pantone</a>.
+    </p>
+  </div>
+  <script src="../js/seedrandom.js"></script>
+  <script src="../js/bind_polyfill.js"></script>
+  <script src="../js/classlist_polyfill.js"></script>
+  <script src="../js/animframe_polyfill.js"></script>
+  <script>
+    // Assets and sentences of this page. The English page sits at the repo root.
+    window.GAME_ROOT = "../";
+
+    // Text that only appears once a game is running, in the language of this page.
+    window.PAGE_STRINGS = {
+      "game-won": "¡Ganaste!",
+      "game-over": "¡Fin del juego!",
+      "tweet1": "Conseguí ",
+      "tweet2": " en 2048-PANTONE #2048game",
+      "2": "gris",
+      "4": "turquesa",
+      "8": "marrón",
+      "16": "magenta",
+      "32": "amarillo",
+      "64": "cian",
+      "128": "verde",
+      "256": "naranja",
+      "512": "lima",
+      "1024": "azul marino",
+      "2048": "rosa"
+    };
+
+    function Localize(key) {
+      return window.PAGE_STRINGS.hasOwnProperty(String(key)) ? window.PAGE_STRINGS[String(key)] : String(key);
+    }
+  </script>
+  <script src="../js/keyboard_input_manager.js"></script>
+  <script src="../js/html_actuator.js"></script>
+  <script src="../js/grid.js"></script>
+  <script src="../js/tile.js"></script>
+  <script src="../js/local_storage_manager.js"></script>
+  <script src="../js/game_manager.js"></script>
+  <script src="../js/application.js"></script>
+  <script>
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+  </script>
+</body>
+</html>

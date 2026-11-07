@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>2048 PANTONE — color tile puzzle</title>
+  <meta name="description" content="Play 2048 PANTONE: merge tiles of the same colour to climb from grey to pinky, watch your level, and undo a move when the board traps you.">
+
+  <link rel="canonical" href="https://tile2048.github.io/2048-PANTONE/">
+  <link rel="alternate" hreflang="en" href="https://tile2048.github.io/2048-PANTONE/">
+  <link rel="alternate" hreflang="es" href="https://tile2048.github.io/2048-PANTONE/es/">
+  <link rel="alternate" hreflang="x-default" href="https://tile2048.github.io/2048-PANTONE/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="2048 PANTONE — color tile puzzle">
+  <meta property="og:description" content="Play 2048 PANTONE: merge tiles of the same colour to climb from grey to pinky, watch your level, and undo a move when the board traps you.">
+  <meta property="og:url" content="https://tile2048.github.io/2048-PANTONE/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+
+  <link href="style/main.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="format-detection" content="telephone=no" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "2048 PANTONE",
+    "inLanguage": "en",
+    "url": "https://tile2048.github.io/2048-PANTONE/",
+    "description": "A PANTONE colour version of the 2048 sliding tile puzzle: merge equal colours to move up the palette from grey to pinky."
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+
+    <div class="heading">
+      <div class="title-container">
+        <h1 class="title">2048 <small>PANTONE</small></h1>
+      </div>
+      <div class="scores-container">
+        <div class="score-container">
+          <p>
+            <span class="caption">Score</span><br>
+            <span class="score-points">0</span>
+          </p>
+        </div>
+        <div class="best-container">
+          <p>
+            <span class="caption">Best Score</span><br>
+            <span class="best-points">0</span>
+          </p>
+        </div>
+        <div class="score-container">
+          <p>
+            <span class="caption">Level</span><br>
+            <span class="score-level">grey</span>
+          </p>
+        </div>
+        <div class="best-container">
+          <p>
+            <span class="caption">Best Level</span><br>
+            <span class="best-level">grey</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="lang-links"><span>English</span> <a href="es/" hreflang="es" lang="es">Español</a></nav>
+
+    <div class="above-game">
+      <p class="game-intro">Join the <strong>PANTONE colors!</strong></p>
+      <a class="restart-button">New Game</a>
+    </div>
+
+    <div class="game-container">
+      <div class="game-message">
+        <p></p>
+        <div class="lower">
+	        <a class="keep-playing-button">Continue</a>
+          <a class="retry-button">Retry</a>
+          <div class="score-sharing"></div>
+        </div>
+      </div>
+
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+        <div class="grid-row">
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+          <div class="grid-cell"></div>
+        </div>
+      </div>
+
+      <div class="tile-container">
+
+      </div>
+    </div>
+
+    <p class="game-explanation">
+      <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles of the same colour touch, they become <strong>the next colour!</strong><br>
+      Hit 'Z' to <a href="#" onclick="handle_undo()">take back one or more moves</a>.
+    </p>
+    <p class="game-about">
+      2048 PANTONE works as a colour chart you can shuffle. Eleven swatches run from a cool grey at 2 through turquoise, brown, magenta, yellow, cyan, green, orange, lime and navy to pinky at 2048, and the number on each swatch is also its score value. Push the 4×4 grid with the arrow keys or a swipe; two swatches of the same shade become the next colour in the sequence. Z undoes a move, which is worth remembering when the grid is one square from full. The palette tops out at pinky, and that tile is the one to chase.
+    </p>
+    <hr>
+    <p class="tile-legend"><strong class="important">Tile Legend:</strong></p>
+    <div class="legend-list">
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-2"><img src="style/img/2.jpg" alt="grey"></div></div>
+        <p>grey</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-4"><img src="style/img/4.jpg" alt="turquoise"></div></div>
+        <p>turquoise</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-8"><img src="style/img/8.jpg" alt="brown"></div></div>
+        <p>brown</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-16"><img src="style/img/16.jpg" alt="magenta"></div></div>
+        <p>magenta</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-32"><img src="style/img/32.jpg" alt="yellow"></div></div>
+        <p>yellow</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-64"><img src="style/img/64.jpg" alt="cyan"></div></div>
+        <p>cyan</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-128"><img src="style/img/128.jpg" alt="green"></div></div>
+        <p>green</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-256"><img src="style/img/256.jpg" alt="orange"></div></div>
+        <p>orange</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-512"><img src="style/img/512.jpg" alt="lime"></div></div>
+        <p>lime</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-1024"><img src="style/img/1024.jpg" alt="navy"></div></div>
+        <p>navy</p>
+      </div>
+      <div class="legend-row">
+        <div class="legend-grid"><div class="legend-cell cell-2048"><img src="style/img/2048.jpg" alt="pinky"></div></div>
+        <p>pinky</p>
+      </div>
+    </div>
+    <hr>
+    <p class="disclaimer">
+    <strong class="important">Note:</strong> A fan-made variant of 2048, the original game by Gabriele Cirulli.
+    </p>
+    <hr>
+    <p class="credits">
+      Colors by <a href="http://www.pantone.com/pages/pantone/index.aspx" title="Pantone - PANTONE Color, products and guides for accurate color communication.">Pantone</a>.
+    </p>
+  </div>
+  <script src="js/seedrandom.js"></script>
+  <script src="js/bind_polyfill.js"></script>
+  <script src="js/classlist_polyfill.js"></script>
+  <script src="js/animframe_polyfill.js"></script>
+  <script>
+    // Assets and sentences of this page. The Spanish page sets ../ and its own words.
+    window.GAME_ROOT = "";
+
+    // Text that only appears once a game is running, in the language of this page.
+    window.PAGE_STRINGS = {
+      "game-won": "You win!",
+      "game-over": "Game over!",
+      "tweet1": "I scored ",
+      "tweet2": " at 2048-PANTONE #2048game",
+      "2": "grey",
+      "4": "turquoise",
+      "8": "brown",
+      "16": "magenta",
+      "32": "yellow",
+      "64": "cyan",
+      "128": "green",
+      "256": "orange",
+      "512": "lime",
+      "1024": "navy",
+      "2048": "pinky"
+    };
+
+    function Localize(key) {
+      return window.PAGE_STRINGS.hasOwnProperty(String(key)) ? window.PAGE_STRINGS[String(key)] : String(key);
+    }
+  </script>
+  <script src="js/keyboard_input_manager.js"></script>
+  <script src="js/html_actuator.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/tile.js"></script>
+  <script src="js/local_storage_manager.js"></script>
+  <script src="js/game_manager.js"></script>
+  <script src="js/application.js"></script>
+  <script>
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+  </script>
+</body>
+</html>
